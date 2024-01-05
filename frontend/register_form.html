@@ -1,0 +1,39 @@
+<!-- users to register -->
+<!-- need to validate password (space is allowed currrently) -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="register.js"></script>
+
+</head>
+
+
+<body>
+    <form name="register_form" action="registration.php" onsubmit="return validateForm()" method="post">
+        <label for="email">Email</label> <input type="text" name="email" id="email" required><br><br>
+        <label for="password">Password</label> <input type="password" name="password" id="pass" required
+            placeholder="Must 6-10 characters" minlength="6" maxlength="10"><br><br>
+        <label for="confirm password">Confirm Password</label> <input type="password" name="c_password" id="c_password"
+            required placeholder="Re-enter password" minlength="6" maxlength="10"><br><br>
+        <label for="birth date">Date of Birth </label><input type="date" name="dob" id="dob"
+            placeholder="Year/Month/Day"><br><br>
+        <label for="country">Country</label><br><br>
+        <select name="country" id="country">
+            <option value="Select your country">Select your country</option>
+            <option value="nepal">Nepal</option>
+            <option value="india">India</option>
+        </select><br><br>
+        <label for="gender">Gender</label> <br><br>
+        <input type="radio" name="gender" id="" value="female">Female <br><br>
+        <input type="radio" name="gender" id="" value="male">Male <br><br>
+        <input type="radio" name="gender" id="" value="other">Other <br><br>
+        <a href="payment.html">Next</a>
+    </form>
+
+</body>
+
+</html>

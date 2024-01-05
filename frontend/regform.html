@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="regstyle.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/css/intlTelInput.min.css">
+    <script src="register.js"></script>
+        
+</head>
+
+<body>
+   
+        <div class="formbox">
+            <form action="registration.php" method="post" >
+                <h2>Register</h2>
+                <diV class="reg">
+                    <div class="col">
+                        <div class="inputbox">
+                            <label for="fname">First Name</label>
+                            <input type="text" required name="firstname">
+                        </div>
+                        <div class="inputbox">
+                            <label for="lname">Last Name</label>
+                            <input type="text" required name="lastname">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="inputbox">
+                            <label for="phone">Phone</label>
+                            <div id="phone-input-container">
+                                <input type="tel" id="phone-input" name="phone" placeholder="Enter your phone number">
+                            </div>
+                        </div>
+                        <div class="inputbox">
+                            <label for="email">Email</label>
+                            <input type="text" required name="email">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="inputbox">
+                            <label for="password">Password</label>
+                            <input type="password" required name="password">
+                        </div>
+                        <div class="inputbox">
+                            <label for="confpassword">Confirm Password</label>
+                            <input type="password" required name="confirmpassword">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="inputbox">
+                            <label for="fname">Date of Birth</label>
+                            <input type="date" name="dob" id="dob" required>
+                        </div>
+                        <div class="inputbox">
+                            <label for="gender">Gender </label>
+                            <div class="gender">
+                                <input type="radio" name="gender" id="" value="female"><label>Female</label>
+                                <input type="radio" name="gender" id="" value="male"><label>Male</label>
+                                <input type="radio" name="gender" id="" value="other"><label>Other</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="register">
+                        <input type="checkbox" value="checked"> By clicking next I agree to the
+                            <b>FantasticFanatic's</b><a href="terms_policy.html">
+                                Terms of Use & Privacy Policy</a></label>
+                    </div>
+                    <button type="submit" name="submit">Next</button>
+                    <div class="login_form">
+                        <p class="credit">Already Subscribed?  <a href="login1.html"> Login to watch</a></p>
+                    </div>
+            </form>
+
+        </div>
+     
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/intlTelInput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/utils.js"></script>
+    <script>
+        // Initialize the phone number input with country flags
+        var input = document.getElementById("phone-input");
+        var iti = window.intlTelInput(input, {
+            autoHideDialCode: true,
+            nationalMode: false,
+            initialCountry: "auto",
+            separateDialCode: true,
+            geoIpLookup: function (callback) {
+                // Replace with your own API endpoint for geolocation lookup
+                $.get("https://ipinfo.io", function () { }, "jsonp").always(function (resp) {
+                    var countryCode = (resp && resp.country) ? resp.country : "";
+                    callback(countryCode);
+                });
+            },
+        });
+
+        // Restrict input to numeric characters only
+        input.addEventListener("input", function () {
+            this.value = this.value.replace(/\D/g, '');
+        });
+    </script>
+</body>
+
+</html>
